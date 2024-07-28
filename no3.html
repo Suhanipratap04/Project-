@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LOVE</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+        body {
+            background-color: #ffe4e1; /* Light pink background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Cute font */
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff0f5; /* Light lavender background */
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            color: #ff69b4; /* Hot pink text color */
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #ff1493; /* Deep pink text color */
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: flex;
+            gap: 20px;
+            position: relative;
+        }
+        .btn a {
+            padding: 10px 20px;
+            background-color: #ff69b4; /* Hot pink button background */
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn a:hover {
+            background-color: #ff1493; /* Deep pink on hover */
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+        .btn a:active {
+            transform: scale(0.9); /* Slightly shrink on click */
+        }
+        .tenor-gif-embed {
+            margin-bottom: 20px;
+        }
+        .animated {
+            animation: moveButton 0.5s ease-in-out forwards;
+        }
+        @keyframes moveButton {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tenor-gif-embed" data-postid="15974530976611222074" data-share-method="host" data-aspect-ratio="1.26923" data-width="100%">
+            <a href="https://tenor.com/view/peach-goma-phone-gif-15974530976611222074">Peach Goma Phone Sticker</a> from
+            <a href="https://tenor.com/search/peach+goma-stickers">Peach Goma Stickers</a>
+        </div>
+        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        <h1>Baby Maan jao na please! Kitna bhao khaoge aap😭</h1>
+        <p>bhut galat baat hai bby😭</p>
+        <div class="btn">
+            <a href="yes.html">Yes</a>
+            <a href="#" id="move-random">No</a>
+        </div>
+    </div>
+    <script>
+        const noButton = document.getElementById('move-random');
+        const container = document.querySelector('.container');
+
+        noButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+
+            const randomX = Math.floor(Math.random() * (containerWidth - noButton.offsetWidth));
+            const randomY = Math.floor(Math.random() * (containerHeight - noButton.offsetHeight));
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${randomX}px`;
+            noButton.style.top = `${randomY}px`;
+
+            // Add animation class
+            noButton.classList.add('animated');
+
+            // Remove animation class after animation ends
+            noButton.addEventListener('animationend', () => {
+                noButton.classList.remove('animated');
+            });
+
+            // Change button color
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            noButton.style.backgroundColor = randomColor;
+        });
+    </script>
+</body>
+</html>
+
